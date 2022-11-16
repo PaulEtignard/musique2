@@ -24,7 +24,7 @@ class NiveauFixtures extends Fixture
         for ($i=3;$i<=6;$i++){
             $niveau = new Niveau();
             $niveau->setTitre($i." eme");
-            $niveau->setSlug($niveau->getTitre());
+            $niveau->setSlug($this->slugger->slug($niveau->getTitre()));
             $this->addReference("niveau".$i,$niveau);
             $manager->persist($niveau);
         }
