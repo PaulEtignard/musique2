@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Article{
+-titre string
+-contenu text
+-slug string
+-séquence sequence
+-createdAt
+}
+
+class sequence{
+-titre string
+-slug string
+-niveau niveau
+}
+
+class niveau{
+-titre string
+-slug string
+}
+
+niveau"0..*" -- "1..1"sequence
+
+sequence"0..1" -- "1..1"Article
+
+
+@enduml
