@@ -17,10 +17,11 @@ class NiveauController extends AbstractController
     /**
      * @param NiveauRepository $niveauRepository
      */
-    public function __construct(NiveauRepository $niveauRepository, SequenceRepository $sequenceRepository)
+    public function __construct(NiveauRepository $niveauRepository,SequenceRepository $sequenceRepository)
     {
         $this->niveauRepository = $niveauRepository;
         $this->sequenceRepository = $sequenceRepository;
+
     }
 
 
@@ -28,10 +29,16 @@ class NiveauController extends AbstractController
     public function getNiveauBySlug($slug): Response
     {
 
+
+
+
         $niveau = $this->niveauRepository->findBy(["slug"=>$slug]);
-        $sequence = $this->sequenceRepository->findBy(["relation"=>$niveau]);
+
+        $sequences = $this->sequenceRepository->findBy(["relation"=>$niveau]);
+
+
         return $this->render('niveau/index.html.twig', [
-            'niveau' => 'NiveauController',
+            'sequences' => $sequences,
         ]);
     }
 }
